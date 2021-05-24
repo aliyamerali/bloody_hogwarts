@@ -5,4 +5,8 @@ class Student < ApplicationRecord
 
   has_many :student_courses, dependent: :destroy
   has_many :courses, through: :student_courses, dependent: :destroy
+
+  def self.avg_age
+    average(:age)
+  end
 end
