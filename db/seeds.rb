@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Student.destroy_all
+Course.destroy_all
+
+@harry = Student.create!(name: "Harry Potter", age: "13", house: "Gryffendor")
+@malfoy = Student.create!(name: "Draco Malfoy", age: "13", house: "Slytherine")
+
+@potions = @harry.courses.create!(name: "Potions")
+@herbology =  @harry.courses.create!(name: "Herbology")
+
+@malfoy.courses << @potions
