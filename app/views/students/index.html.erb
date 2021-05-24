@@ -1,6 +1,9 @@
 <h1>Students</h1>
 
+<%= "Average Age: #{@students.average(:age)}" %>
+<br><br>
+
 <% @students.each do |student| %>
-  <%= "Name: #{student.name}, Age: #{student.age}, House: #{student.age}" %>
+  <%= "Name: #{student.name}, Age: #{student.age}, House: #{student.house}" %>
   <br>
 <% end %>

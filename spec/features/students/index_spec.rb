@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Students index page', type: :feature do
   before :each do
     @harry = Student.create!(name: "Harry Potter", age: "13", house: "Gryffendor")
-    @malfoy = Student.create!(name: "Draco Malfoy", age: "13", house: "Slytherine")
+    @malfoy = Student.create!(name: "Draco Malfoy", age: "15", house: "Slytherine")
 
     visit '/students'
   end
@@ -15,5 +15,9 @@ RSpec.describe 'Students index page', type: :feature do
     expect(page).to have_content(@malfoy.name)
     expect(page).to have_content(@malfoy.age)
     expect(page).to have_content(@malfoy.house)
+  end
+
+  it 'shows average age of all students' do
+    expect(page).to have_content("Average Age: 14")
   end
 end
