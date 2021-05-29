@@ -8,13 +8,14 @@ RSpec.describe 'Students index page', type: :feature do
     visit '/students'
   end
 
-  it 'shows a list of students with their name, age, house' do
+  it 'shows a list of students with their name, age, house in alphabetical order' do
     expect(page).to have_content(@harry.name)
     expect(page).to have_content(@harry.age)
     expect(page).to have_content(@harry.house)
     expect(page).to have_content(@malfoy.name)
     expect(page).to have_content(@malfoy.age)
     expect(page).to have_content(@malfoy.house)
+    expect(@malfoy.name).to appear_before(@harry.name)
   end
 
   it 'shows average age of all students' do

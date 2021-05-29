@@ -1,6 +1,12 @@
 <h1>Courses</h1>
 
 <% @courses.each do |course| %>
-  <%= "#{course.name}: #{course.students.count}" %>
-  <br>
+  <section class=<%=course.name%>>    
+  <p> <%= "#{course.name}: #{course.students.count} students" %> </p>
+  <ul>
+    <% course.students.alphabetically.each do |student| %>
+      <li><%= student.name %></li>
+    <% end %>
+  </ul>
+</section>
 <% end %>

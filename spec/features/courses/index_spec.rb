@@ -13,8 +13,20 @@ RSpec.describe 'courses index page', type: :feature do
     visit '/courses'
   end
 
-  it 'shows the list of all courses with the count of students enrolled' do
+  it 'shows the list of all courses sorted alphabetically with the count of students enrolled' do
     expect(page).to have_content("Potions: 2")
     expect(page).to have_content("Herbology: 1")
+    expect("Herbology").to appear_before("Potions")
+  end
+
+  it 'shows the list of students per course sorted alphabetically' do
+    within('.Potions') do
+      expect(page).to have_content(@harry.name)
+      expect(page).to have_content(@malfoy.name)
+      expect(@malfoy.name).to appear_before(@harry.name)
+    end
+    within('.Herbology') do
+      expect(page).to have_content(@harry.name)
+    end
   end
 end
